@@ -87,8 +87,8 @@ function OutputRow({measureValue, unitValue, densityValue, densityUnit, massValu
   }
 
   return (
-    <div>
-      <div>
+    <div className="output-container">
+      <div className="output-buttons">
         <button type="reset" id="reset-btn">Reset</button>
         <button type="calculate" id="calculate-btn" onClick={Calculate}>Calculate</button>
       </div>
@@ -161,20 +161,21 @@ function MassVolumeInputRow({measureValue, unitValue, massValue, volumeValue, ha
   }, [measureValue]);
 
   return (
-    <div>
-      <div>
-      <label htmlFor="mass-input" className='input-label'>Mass</label>
-      <input className="compact-input" type="number" id="mass-input" value={massValue} onChange={(e) => handleMassInput(e.target.value)}/>
-      <MassUnitBox massUnit={massUnit} handleMassUnit={setMassUnit} />
+    <>
+      <div className="input-container">
+        <div className="mass-block">
+          <label htmlFor="mass-input" className='input-label'>Mass</label>
+          <input className="compact-input" type="number" id="mass-input" value={massValue} onChange={(e) => handleMassInput(e.target.value)}/>
+          <MassUnitBox massUnit={massUnit} handleMassUnit={setMassUnit} />
+        </div>
+
+        <div className="volume-block">
+          <label htmlFor="volume-input" className='input-label'>Volume</label>
+          <input className="compact-input" type="number" id="volume-input" value={volumeValue} onChange={(e) => handleVolumeInput(e.target.value)}/>
+          <VolumeUnitBox volumeUnit={volumeUnit} handleVolumeUnit={setVolumeUnit}/>
+        </div>
       </div>
 
-      <div>
-      <label htmlFor="volume-input" className='input-label'>Volume</label>
-      <input className="compact-input" type="number" id="volume-input" value={volumeValue} onChange={(e) => handleVolumeInput(e.target.value)}/>
-      <VolumeUnitBox volumeUnit={volumeUnit} handleVolumeUnit={setVolumeUnit}/>
-      </div>
-
-      <div>
       <OutputRow
       measureValue={measureValue}
       unitValue={unitValue}
@@ -182,8 +183,8 @@ function MassVolumeInputRow({measureValue, unitValue, massValue, volumeValue, ha
       volumeValue={volumeValue}
       massUnit={massUnit}
       volumeUnit={volumeUnit} />
-      </div>
-    </div>
+
+    </>
   );
 }
 
@@ -280,7 +281,6 @@ function InputSection({measureValue, unitValue}) {
 
   return (
     <>
-
       {measureValue === 'density' && <MassVolumeInputRow
       measureValue={measureValue}
       unitValue={unitValue}

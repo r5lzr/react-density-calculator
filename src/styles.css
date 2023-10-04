@@ -24,3 +24,51 @@
     display: grid;
     gap: 1rem;
 }
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mass-block {
+    display: flex;
+    margin-left: 10px;
+}
+
+.mass-block label {
+    margin-left: 6px;
+    margin-right: 4px;
+}
+
+.volume-block {
+    display: flex;
+}
+
+.volume-block label {
+    margin-right: 5px;
+}
+
+.output-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.output-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+}
+
+.output-buttons button {
+    width: 50%;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    background: green;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
