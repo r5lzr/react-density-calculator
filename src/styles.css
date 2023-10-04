@@ -8,10 +8,11 @@
 }
 
 .background {
-    display: grid;
+    display: flex;
     background-color: gray;
-    place-items: center;
-    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
@@ -21,7 +22,8 @@
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25);
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
 }
 
@@ -29,16 +31,18 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    align-items: flex-end;
-    margin-right: 85px;
 }
 
 .input-container label {
+    flex: 0 1 80px;
     font-weight: 600;
     font-size: 1.25rem;
+    font-family: "Arial", sans-serif;
+    margin-top: 6px;
 }
 
 .input-container input {
+    flex: 1;
     border: 1px solid black;
     border-radius: 5px;
     outline-color: #555;
@@ -51,23 +55,19 @@
     width: 80px;
     height: 35px;
     margin-left: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline-color: #555;
 }
 
-.mass-block {
+.input-container label {
     display: flex;
-    margin-left: 10px;
+    justify-content: flex-end;
+    padding-right: 5px;
 }
 
-.mass-block label {
-    margin-right: 5px;
-}
-
-.volume-block {
+.mass-block, .volume-block {
     display: flex;
-}
-
-.volume-block label {
-    margin-right: 5px;
 }
 
 .output-container {
@@ -83,7 +83,7 @@
 }
 
 .output-buttons button {
-    width: 50%;
+    flex: 1;
     border-radius: 5px;
     border: none;
     cursor: pointer;

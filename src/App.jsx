@@ -87,7 +87,7 @@ function OutputRow({measureValue, unitValue, densityValue, densityUnit, massValu
   }
 
   return (
-    <div className="output-container">
+    <>
       <div className="output-buttons">
         <button type="reset" id="reset-btn">Reset</button>
         <button type="calculate" id="calculate-btn" onClick={Calculate}>Calculate</button>
@@ -95,7 +95,7 @@ function OutputRow({measureValue, unitValue, densityValue, densityUnit, massValu
       <div>
           <h1 id="result">{calc} {units}</h1>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -176,14 +176,15 @@ function MassVolumeInputRow({measureValue, unitValue, massValue, volumeValue, ha
         </div>
       </div>
 
-      <OutputRow
-      measureValue={measureValue}
-      unitValue={unitValue}
-      massValue={massValue}
-      volumeValue={volumeValue}
-      massUnit={massUnit}
-      volumeUnit={volumeUnit} />
-
+      <div className="output-container">
+        <OutputRow
+        measureValue={measureValue}
+        unitValue={unitValue}
+        massValue={massValue}
+        volumeValue={volumeValue}
+        massUnit={massUnit}
+        volumeUnit={volumeUnit} />
+      </div>
     </>
   );
 }
