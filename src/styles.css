@@ -120,3 +120,16 @@
 .output-buttons button:hover {
     filter: brightness(120%)
 }
+
+.result-container {
+    margin-top: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline-color: #555;
+}
+.result-container h1 {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 300;
+    font-family: "Arial", sans-serif;
+}

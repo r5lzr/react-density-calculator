@@ -98,8 +98,8 @@ function OutputRow({measureValue, unitValue, densityValue, densityUnit, massValu
         <button type="reset" id="reset-btn" onClick={Reset}>Reset</button>
         <button type="calculate" id="calculate-btn" onClick={Calculate}>Calculate</button>
       </div>
-      <div>
-          <h1 id="result">{calc} {units}</h1>
+      <div className="result-container">
+        <h1 id="result">{calc} {units}</h1>
       </div>
     </>
   );
