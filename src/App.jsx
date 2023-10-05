@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function OutputRow({measureValue, unitValue, densityValue, densityUnit, massValue, massUnit, volumeValue, volumeUnit}) {
+function OutputRow({measureValue, unitValue, densityValue, densityUnit, massValue, massUnit, volumeValue, volumeUnit, handleReset}) {
   const [calc, setCalc] = useState('');
   const [units, setUnits] = useState(null);
 
@@ -42,6 +42,12 @@ function OutputRow({measureValue, unitValue, densityValue, densityUnit, massValu
       setCalc(calculate_volume);
     }
     setUnits(unitValue);
+  }
+
+  const Reset = () => {
+    setCalc('');
+    setUnits('');
+    handleReset();
   }
 
   function DensityConversion(value) {
@@ -89,7 +95,7 @@ function OutputRow({measureValue, unitValue, densityValue, densityUnit, massValu
   return (
     <>
       <div className="output-buttons">
-        <button type="reset" id="reset-btn">Reset</button>
+        <button type="reset" id="reset-btn" onClick={Reset}>Reset</button>
         <button type="calculate" id="calculate-btn" onClick={Calculate}>Calculate</button>
       </div>
       <div>
@@ -147,7 +153,7 @@ function VolumeUnitBox({volumeUnit, handleVolumeUnit}) {
   );
 }
 
-function MassVolumeInputRow({measureValue, unitValue, massValue, volumeValue, handleMassInput, handleVolumeInput}) {
+function MassVolumeInputRow({measureValue, unitValue, massValue, volumeValue, handleMassInput, handleVolumeInput, handleReset}) {
   const [massUnit, setMassUnit] = useState('kg');
   const [volumeUnit, setVolumeUnit] = useState('m^3');
 
@@ -183,13 +189,14 @@ function MassVolumeInputRow({measureValue, unitValue, massValue, volumeValue, ha
         massValue={massValue}
         volumeValue={volumeValue}
         massUnit={massUnit}
-        volumeUnit={volumeUnit} />
+        volumeUnit={volumeUnit}
+        handleReset={handleReset} />
       </div>
     </>
   );
 }
 
-function DensityVolumeInputRow({measureValue, unitValue, densityValue, volumeValue, handleDensityInput, handleVolumeInput}) {
+function DensityVolumeInputRow({measureValue, unitValue, densityValue, volumeValue, handleDensityInput, handleVolumeInput, handleReset}) {
   const [densityUnit, setDensityUnit] = useState('kg/m^3');
   const [volumeUnit, setVolumeUnit] = useState('m^3');
 
@@ -223,13 +230,14 @@ function DensityVolumeInputRow({measureValue, unitValue, densityValue, volumeVal
       densityValue={densityValue}
       volumeValue={volumeValue}
       densityUnit={densityUnit}
-      volumeUnit={volumeUnit} />
+      volumeUnit={volumeUnit}
+      handleReset={handleReset} />
       </div>
     </div>
   );
 }
 
-function MassDensityInputRow({measureValue, unitValue, massValue, densityValue, handleMassInput, handleDensityInput}) {
+function MassDensityInputRow({measureValue, unitValue, massValue, densityValue, handleMassInput, handleDensityInput, handleReset}) {
   const [massUnit, setMassUnit] = useState('kg');
   const [densityUnit, setDensityUnit] = useState('kg/m^3');
 
@@ -263,7 +271,8 @@ function MassDensityInputRow({measureValue, unitValue, massValue, densityValue, 
       massValue={massValue}
       densityValue={densityValue}
       massUnit={massUnit}
-      densityUnit={densityUnit} />
+      densityUnit={densityUnit}
+      handleReset={handleReset} />
       </div>
     </div>
   );
@@ -277,8 +286,14 @@ function InputSection({measureValue, unitValue}) {
   useEffect(() => {
     setDensityValue('');
     setMassValue('');
-    setVolumeValue('')
+    setVolumeValue('');
   }, [measureValue]);
+
+  const handleReset = () => {
+    setDensityValue('');
+    setMassValue('');
+    setVolumeValue('');
+  }
 
   return (
     <>
@@ -288,7 +303,8 @@ function InputSection({measureValue, unitValue}) {
       massValue={massValue}
       volumeValue={volumeValue}
       handleMassInput={setMassValue}
-      handleVolumeInput={setVolumeValue} />}
+      handleVolumeInput={setVolumeValue}
+      handleReset={handleReset} />}
 
       {measureValue === 'mass' && <DensityVolumeInputRow
       measureValue={measureValue}
@@ -296,7 +312,8 @@ function InputSection({measureValue, unitValue}) {
       densityValue={densityValue}
       volumeValue={volumeValue}
       handleDensityInput={setDensityValue}
-      handleVolumeInput={setVolumeValue} />}
+      handleVolumeInput={setVolumeValue}
+      handleReset={handleReset} />}
 
       {measureValue === 'volume' && <MassDensityInputRow
       measureValue={measureValue}
@@ -304,7 +321,8 @@ function InputSection({measureValue, unitValue}) {
       massValue={massValue}
       densityValue={densityValue}
       handleMassInput={setMassValue}
-      handleDensityInput={setDensityValue} />}
+      handleDensityInput={setDensityValue}
+      handleReset={handleReset} />}
     </>
   );
 }
