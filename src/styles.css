@@ -76,8 +76,8 @@
 }
 
 .input-container select {
-    font-size: 1.25rem;
-    width: 80px;
+    font-size: 1.2rem;
+    width: 90px;
     height: 35px;
     margin-left: 5px;
     border: 1px solid black;
@@ -85,7 +85,7 @@
     outline-color: #555;
 }
 
-.mass-block, .volume-block {
+.density-block, .mass-block, .volume-block {
     display: flex;
 }
 

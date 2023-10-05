@@ -210,30 +210,31 @@ function DensityVolumeInputRow({measureValue, unitValue, densityValue, volumeVal
   }, [measureValue]);
 
   return (
-    <div>
-      <div>
-      <label htmlFor="density-input" className='input-label'>Density</label>
-      <input className="compact-input" type="number" id="density-input" value={densityValue} onChange={(e) => handleDensityInput(e.target.value)}/>
-      <DensityUnitBox densityUnit={densityUnit} handleDensityUnit={setDensityUnit} />
+    <>
+      <div className="input-container">
+        <div className="density-block">
+          <label htmlFor="density-input" className='input-label'>Density</label>
+          <input className="compact-input" type="number" id="density-input" value={densityValue} onChange={(e) => handleDensityInput(e.target.value)}/>
+          <DensityUnitBox densityUnit={densityUnit} handleDensityUnit={setDensityUnit} />
+        </div>
+        <div className="volume-block">
+          <label htmlFor="volume-input" className='input-label'>Volume</label>
+          <input className="compact-input" type="number" id="volume-input" value={volumeValue} onChange={(e) => handleVolumeInput(e.target.value)}/>
+          <VolumeUnitBox volumeUnit={volumeUnit} handleVolumeUnit={setVolumeUnit}/>
+        </div>
       </div>
 
-      <div>
-      <label htmlFor="volume-input" className='input-label'>Volume</label>
-      <input className="compact-input" type="number" id="volume-input" value={volumeValue} onChange={(e) => handleVolumeInput(e.target.value)}/>
-      <VolumeUnitBox volumeUnit={volumeUnit} handleVolumeUnit={setVolumeUnit}/>
+      <div className="output-container">
+        <OutputRow
+        measureValue={measureValue}
+        unitValue={unitValue}
+        densityValue={densityValue}
+        volumeValue={volumeValue}
+        densityUnit={densityUnit}
+        volumeUnit={volumeUnit}
+        handleReset={handleReset} />
       </div>
-
-      <div>
-      <OutputRow
-      measureValue={measureValue}
-      unitValue={unitValue}
-      densityValue={densityValue}
-      volumeValue={volumeValue}
-      densityUnit={densityUnit}
-      volumeUnit={volumeUnit}
-      handleReset={handleReset} />
-      </div>
-    </div>
+    </>
   );
 }
 
@@ -251,30 +252,31 @@ function MassDensityInputRow({measureValue, unitValue, massValue, densityValue, 
   }, [measureValue]);
 
   return (
-    <div>
-      <div>
-      <label htmlFor="mass-input" className='input-label'>Mass</label>
-      <input className="compact-input" type="number" id="mass-input" value={massValue} onChange={(e) => handleMassInput(e.target.value)} />
-      <MassUnitBox massUnit={massUnit} handleMassUnit={setMassUnit} />
+    <>
+      <div className="input-container">
+        <div className="mass-block">
+          <label htmlFor="mass-input" className='input-label'>Mass</label>
+          <input className="compact-input" type="number" id="mass-input" value={massValue} onChange={(e) => handleMassInput(e.target.value)} />
+          <MassUnitBox massUnit={massUnit} handleMassUnit={setMassUnit} />
+        </div>
+        <div className="volume-block">
+          <label htmlFor="density-input" className='input-label'>Density</label>
+          <input className="compact-input" type="number" id="density-input" value={densityValue} onChange={(e) => handleDensityInput(e.target.value)} />
+          <DensityUnitBox densityUnit={densityUnit} handleDensityUnit={setDensityUnit} />
+        </div>
       </div>
 
-      <div>
-      <label htmlFor="density-input" className='input-label'>Density</label>
-      <input className="compact-input" type="number" id="density-input" value={densityValue} onChange={(e) => handleDensityInput(e.target.value)} />
-      <DensityUnitBox densityUnit={densityUnit} handleDensityUnit={setDensityUnit} />
+      <div className="output-container">
+        <OutputRow
+        measureValue={measureValue}
+        unitValue={unitValue}
+        massValue={massValue}
+        densityValue={densityValue}
+        massUnit={massUnit}
+        densityUnit={densityUnit}
+        handleReset={handleReset} />
       </div>
-
-      <div>
-      <OutputRow
-      measureValue={measureValue}
-      unitValue={unitValue}
-      massValue={massValue}
-      densityValue={densityValue}
-      massUnit={massUnit}
-      densityUnit={densityUnit}
-      handleReset={handleReset} />
-      </div>
-    </div>
+    </>
   );
 }
 
