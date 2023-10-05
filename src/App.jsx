@@ -381,8 +381,10 @@ export default function Calculator() {
   return (
     <div className="background">
       <div className="container">
-        <SolveForRow measureValue={measureValue} handleMeasureChange={setMeasureValue}/>
-        <UnitsRow measureValue={measureValue} unitValue={unitValue} handleUnitChange={setUnitValue}/>
+        <div className="solve-container">
+          <SolveForRow measureValue={measureValue} handleMeasureChange={setMeasureValue}/>
+          <UnitsRow measureValue={measureValue} unitValue={unitValue} handleUnitChange={setUnitValue}/>
+        </div>
         <InputSection measureValue={measureValue} unitValue={unitValue}/>
       </div>
     </div>
